@@ -1,15 +1,16 @@
+import os
+
 from flask import Flask, request, render_template, redirect, flash, session
 from datetime import datetime as dt
 from flask_debugtoolbar import DebugToolbarExtension
 from forex_python.converter import CurrencyRates, CurrencyCodes
-import math
 
 c = CurrencyRates()
 cc = CurrencyCodes()
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = "never-tell!"
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', "it's a secret")
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 
 debug = DebugToolbarExtension(app)
