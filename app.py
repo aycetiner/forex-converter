@@ -3,7 +3,7 @@ import os
 from flask import Flask, request, render_template, redirect, flash, session
 from datetime import datetime as dt
 from flask_debugtoolbar import DebugToolbarExtension
-from forex_python.converter import CurrencyRates, CurrencyCodes
+from forex_python.converter import CurrencyRates, CurrencyCodes, RatesNotAvailableError
 
 c = CurrencyRates()
 cc = CurrencyCodes()
@@ -33,10 +33,15 @@ def show_currency():
 
     try: 
         c.get_rates(from_currency)
+    except RatesNotAvailableError as error:
+        flash(f"Error raised: {error}")
+        session['conversion'] = ''
+        return redirect ("/")
     except:
         flash(f"Invalid currency: {from_currency}.")
         session['conversion'] = ''
         return redirect ("/")
+    
     
 
     try: 
