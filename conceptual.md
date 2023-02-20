@@ -57,10 +57,12 @@ To collect data from the query string using Flask, you can access the query para
 To collect data from the body of the request using Flask, you can access the request body in the view function using request.data or request.get_json().
 
 - What is a cookie and what kinds of things are they commonly used for?
-  A cookie is a small text file that a website stores on a user's device to remember their preferences or login information. Cookies are commonly used for tracking user activity, storing shopping cart items, and personalizing website content.
+
+A cookie is a small text file that a website stores on a user's device to remember their preferences or login information. Cookies are commonly used for tracking user activity, storing shopping cart items, and personalizing website content.
 
 - What is the session object in Flask?
-  The session object in Flask is a way to store user-specific information across multiple requests. It uses cookies to store a unique session ID on the user's device, and then stores the session data on the server.
+
+The session object in Flask is a way to store user-specific information across multiple requests. It uses cookies to store a unique session ID on the user's device, and then stores the session data on the server.
 
 - What does Flask's `jsonify()` do?
 
